@@ -1,0 +1,47 @@
+"""
+>>> Hexa = DecaHex(90)
+>>> Hexa.convertiraHexadecimal()
+>>> Hexa.getHexadecimal()
+(5, 'A')
+"""
+#definir clase
+class DecaHex:
+    __decimal = int(0)
+    __conversor = int(0)
+    __hexadecimal = int(0)
+#método contructor
+    def __init__(self, decimal):
+        self.__decimal = decimal
+#hacer operaciones incluyendo condicionales
+    def convertiraHexadecimal(self):
+        if ((self.__decimal > -1) & (self.__decimal < 65536  )):
+            contador = int(0)#contador
+            while ((self.__decimal != 0)):#mientras el numero sea diferente a cero 3 se realizará el bucle
+                self.__conversor = (self.__decimal % 16)
+                self.__decimal = int(self.__decimal / 16)
+                if (self.__conversor == 10):
+                    self.__conversor = 'A'
+                elif (self.__conversor == 11):
+                    self.__conversor = 'B'
+                elif (self.__conversor == 12):
+                    self.__conversor = 'C'
+                elif (self.__conversor == 13):
+                    self.__conversor = 'D'
+                elif (self.__conversor == 14):
+                    self.__conversor = 'E'
+                elif (self.__conversor == 15):
+                    self.__conversor = 'F'
+                if (contador < 1):
+                    self.__hexadecimal = self.__conversor
+                    contador = contador + 1
+                else:
+                    self.__hexadecimal = self.__conversor, self.__hexadecimal
+        else:
+            self.__hexadecimal = 'Invalido'#si la instruccion no  se completa se le agregará este mensaje
+#obtención de la clase principal para ejecutar
+    def getHexadecimal(self):
+        return self.__hexadecimal
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod() #agregamos las pruebas
